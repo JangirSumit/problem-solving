@@ -1,0 +1,36 @@
+function checkIfDiffIsOk(arr, item) {
+    var result = true;
+
+    for (var i = 0; i < arr.length; i++) {
+        if ((arr[i] - item) > 1 || (arr[i] - item) < -1) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+
+
+function pickingNumbers(a) {
+    var possbile_arrs = []
+    // Write your code here
+    
+    var a = a.sort((a, b) => parseInt(a) - parseInt(b));
+
+    for (var i = 0; i < a.length; i++) {
+        var possbile_arr = []
+        for (var j = i; j < a.length; j++) { 
+            if (checkIfDiffIsOk(possbile_arr, a[j])) {
+                possbile_arr.push(a[j]);
+            }
+        }
+        possbile_arrs.push(possbile_arr);
+    }
+    //console.log(possbile_arrs)
+    var arr_lengths = possbile_arrs.map((a) => a.length);
+    //console.log(arr_lengths)
+    return Math.max(...arr_lengths);
+}
+
+var arr = [4, 6, 5, 3, 3, 1];
+console.log(pickingNumbers(arr));
