@@ -1,0 +1,36 @@
+def minion_game(string):
+    string = string.upper()
+    stuart_strings_count = 0
+    kevin_string_count = 0
+
+    for i in range(0, len(string)):
+        stuart_strings_count = stuart_strings_count + get_possible_string_count_for_stuart(i, string)
+        kevin_string_count = kevin_string_count + get_possible_string_count_for_kevin(i, string)
+
+    if(stuart_strings_count > kevin_string_count):
+        print("Stuart "+ str(stuart_strings_count))
+    elif(stuart_strings_count < kevin_string_count):
+        print("Kevin "+ str(kevin_string_count))
+    else:
+        print("Draw")
+
+
+def get_possible_string_count_for_stuart(start, string):
+    count = 0
+    vowels = ['A', 'E', 'I', 'O', 'U']
+    
+    if(string[start] not in vowels):
+        count = len(string) - start
+
+    return count
+
+def get_possible_string_count_for_kevin(start, string):
+    count = 0
+    vowels = ['A', 'E', 'I', 'O', 'U']
+    
+    if(string[start] in vowels):
+        count = len(string) - start
+
+    return count
+
+if __name__ == '__main__':
