@@ -1,0 +1,18 @@
+def merge_the_tools(string, k):
+    total_lines = int(len(string)/k)
+    start = 0
+    end = k
+    
+    for i in range(0, total_lines+1):
+        str_temp = string[start: end]
+        #print(str_temp)
+        start = k*(i+1)
+        end = k*(i+2)
+        #print(start)
+        #print(end)
+        print("".join(remove_duplicate(str_temp)))
+
+def remove_duplicate(x):
+  return list(dict.fromkeys(x))
+
+if __name__ == '__main__':
